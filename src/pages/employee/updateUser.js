@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import "./updateUser.css";
 
 const updateUser = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,11 +36,29 @@ const updateUser = () => {
     getUser();
   }, [id]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`http://localhost:8080/api/employee/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      console.log("User updated", data);
+      navigate("/");
+    } catch (error) {
+      console.log("Error updating user", error);
+    }
+  };
+
   return (
     <>
       <div className="center-form">
         <h1>Edit User</h1>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           {/* Name */}
           <Form.Group controlId="formBasicName">
             <Form.Label>Name</Form.Label>
