@@ -17,6 +17,29 @@ const Dashboard = () => {
     };
     fetchEmployees();
   }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/employee/${id}`, {
+        method: "DELETE",
+      });
+
+      // Kiểm tra phản hồi từ server
+      const message = await response.text();
+      console.log("Server response:", message);
+
+      if (response.ok) {
+        setEmployees((prevEmployees) =>
+          prevEmployees.filter((employee) => employee.id !== id)
+        );
+      } else {
+        console.error("Error deleting employee:", message);
+      }
+    } catch (error) {
+      console.log("Error deleting employee", error);
+    }
+  };
+
   return (
     <Container className="mt-5">
       <Row>
@@ -45,7 +68,12 @@ const Dashboard = () => {
                     <Button variant="outline-secondary" className="me-2">
                       Update
                     </Button>
-                    <Button variant="outline-danger">Delete</Button>
+                    <Button
+                      variant="outline-danger"
+                      onClick={() => handleDelete(employee.id)}
+                    >
+                      Delete
+                    </Button>
                   </td>
                 </tr>
               ))}
