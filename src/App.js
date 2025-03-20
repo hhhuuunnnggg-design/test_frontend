@@ -5,7 +5,7 @@ import Dashboard from "./pages/dashboard/dashboard.js";
 import PostUser from "./pages/employee/postUser.js";
 import Header from "./pages/header/header.js";
 import NoMatch123 from "./pages/noMatch/noMatch.js"; // Viết hoa đúng với tên file
-
+import UpdateUser from "./pages/employee/updateUser.js";
 function App() {
   return (
     <>
@@ -13,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/employees" element={<PostUser />} />
+        <Route path="/employees/:id" element={<UpdateUser />} />
         <Route path="*" element={<NoMatch123 />} />
       </Routes>
     </>
