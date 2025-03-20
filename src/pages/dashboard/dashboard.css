@@ -1,0 +1,53 @@
+/* Căn giữa tiêu đề */
+h1.text-center {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Tăng khoảng cách */
+.mt-5 {
+  margin-top: 40px !important;
+}
+
+/* Bảng hiển thị đẹp hơn */
+table {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hiệu ứng hover trên bảng */
+tbody tr:hover {
+  background-color: #f8f9fa;
+  transition: background-color 0.3s ease;
+}
+
+/* Các ô trong bảng */
+th,
+td {
+  text-align: center;
+  padding: 12px;
+  font-size: 16px;
+}
+
+/* Style cho button */
+button {
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Nút Update */
+button.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* Nút Delete */
+button.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}
